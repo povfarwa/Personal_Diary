@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sign in — my diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+     <div class="auth-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8B6914" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H602 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+            <polyline points="14 2 14 8 20 8">
+            <line x1="16" y1="13" x2="8" y2="13">
+            <line x1="16" y1="17" x2="8" y2="17">
+            <polyline points="10 9 9 9 8 9">
+        </svg>
+    </div>
+
+    <div class="auth-card">
+        <div class="diary-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="auth-title">my diary</div>
+    <div class="auth-subtitle">sign in to continue</div>
+
+    <% if(error) { %>
+        <div class="error-msg"><%= error %></div>
+    <% } %>
+
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="choose a username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="choose a password" required>
+        </div>
+        <button type="submit" class="btn-submit">Sign in</button>
+    </form>
+
+    <div class="auth-footer">
+        Dont have an account? <a href="/login">Create Account</a>
+    </div>
+</body>
+</html>
