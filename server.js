@@ -31,7 +31,7 @@ app.get('/login', (req, res) => {
     res.render('login', {error: null})
 })
 
-pp.post('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body
     try{
         const user = await UserActivation.findOne({ username })
