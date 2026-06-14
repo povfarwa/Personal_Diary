@@ -9,3 +9,6 @@ app.use(express.json)
 app.use(cookiePrser)
 app.set('view engine', 'ejs')
 
+app.get('/register', (req, res) => {
+    res.render('/register')
+})
