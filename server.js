@@ -31,6 +31,12 @@ app.get('/login', (req, res) => {
     res.render('login', {error: null})
 })
 
+app.get('/logout', (req, res) => {
+    res.clearCookie('token')
+    res.clearCookie('diary_unlocked')
+    res.redirect('/lock')
+})
+
 app.post('/login', async (req, res) => {
     const { username, password } = req.body
     try{
@@ -45,4 +51,17 @@ app.post('/login', async (req, res) => {
     } catch (err) {
         res.status(500).send('Server Error')
     }
+})
+
+app.get('/dashboard', auth, async ()req, res)=> {
+    try{
+        const entries= await Entry.find({ user: req.user.id }).sort({ createdAt: -1 })
+        res.render('dashboard', {entries})
+    }catch (err){
+        res.status(500).send('Server Error')
+    }
+}
+
+app.get('/write', auth, (req, res) => {
+    res.render('write', { entry:null })
 })
