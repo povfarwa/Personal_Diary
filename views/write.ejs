@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= entry ? 'edit entry — my diary' : 'new entry — my diary' %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-container">
+        <div class="top-bar">
+            <a href="/dashboard">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                back to diary
+            </a>
+            <div class="page-title"><%= entry ? 'edit entry' : 'new entry' %></div>
+        </div>
+
+        <form action="<%= entry ? '/entries/edit/' + entry._id : '/entries' %>" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="What's this about?" value="<%= entry ? entry.title : '' %>" required>
+            </div>
+
+            <div>
+                <button>
+                    <svg width="16" heeight="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                        <polyline points="17 21 17 13 7 13 7 21"/>
+                        <polyline points="7 3 7 8 15 8"/>
+                    </svg>
+                    <%= entry ? 'Save changes' : 'Save entry'%>
+                </button>
+                <a href="/dashboard" class="btn btn-cancel">Cancel</a>
+            </div>
+
+            <%= if(entry){
+                <div>Last edited: <%= newDate(entry.createdAt).toLocalDateString('en-US', { weekly: 'long', month: 'long', day: 'numeric', year:'numeric', hour:'2-digit', minute:'2-digit'})%></div>
+               <%= } %>
+        </form>
+    </div>
+
+    <script>
+        const content = document.getElementById('content')
+        const charCount = document.getElementById('charCount');
+        content.addEventListener('input', () => {
+            charCount.textContent = content.value.length;
+        });
+        charCount.textContent = content.value.length;
+    </script>
+</body>
+</html>

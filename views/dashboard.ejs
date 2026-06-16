@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="diary-container">
+        <header class="header-title">
+            <div class="header-actions">my diary</div>
+            <div>
+                <a href="/settings" class="btn-logout" style="border-color: white; color:#8B6914;">settings</a>
+                <a href="/logout">sign out</a>
+            </div>
+        </header>
+
+        <div>
+            <div class="section-title"><%= entries.length %><% entries.length === 1 ? 'entry' : 'entries'%></div>
+            <a href="/write" class="btn btn-write">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12h14" />
+                </svg>
+                Write
+            </a>
+        </div>
+
+        <% if(entries.length === 0) { %>
+            <div>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <line x1="9" y1="15" x2="15" y2="15" />
+                </svg>
+                <h3>Your Diary is empty</h3>
+                <p>Write down your first thought, memory etc</p>
+                <a href="/write" class="btn btn-primary" style="display:inline-flex">Write your first entry</a>
+            </div>
+            <% } %>
+
+            <% entries.forEach(entry => { %>
+                <div class="entry-card" onclick="window.location='/entry/<%= entry._id %>'">
+                    <div class="entry-meta">
+                        <span class="entry-date"><%= new Date(entry.createdAt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) %></span>
+                    <span class="entry-mood"><%= entry.mood %></span>                    </div>
+                </div>
+                 <div class="entry-title"><%= entry.title %></div>
+                <div class="entry-preview"><%= entry.content %></div>
+                <div class="entry-actions" onclick="event.stopPropagation()">
+                    <button class="edit-btn" onclick="window.location='/entry/<%= entry._id %>'">open & edit</button>
+                    <form action="/entries/delete/<%= entry._id %>" method="POST" onsubmit="return confirm('Delete this entry forever?')" style="display:inline;">
+                        <button type="submit" class="delete-btn">delete</button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+</body>
+</html>
