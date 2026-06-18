@@ -66,3 +66,54 @@ app.get('/write', auth, (req, res) => {
     res.render('write', { entry:null })
 })
 
+app.get('/entry/:id', auth, async (req, res) => {
+    try{
+        const entry= await Entry.findOne({ _id: req.params.id, user: req.user.id })
+        if (!entry) return res.redirect('/dashboard')
+            res.render('write', { entry })
+    }
+    catch (err) {
+        res.redirect('/dashboard')
+    }
+})
+
+app.post('/entries', auth, async (req, res) => {
+    const {title, content} = req.body
+    try {
+        const newEntry = new Entry({
+            user: req.user.id,
+            title,
+            content
+        })
+        await newEntrry.save()
+        res.redirect('/dashboard')
+    } catch (err) {
+        res.status(500).send('Server Error')
+    }
+})
+
+app.post('/entries/edit/:id', auth, async (req, res) => {
+    const {title, content} = req.body;
+    try{
+        await Entry.findOneAndUpdate(
+            { _id: req.params.id, user: req.user.id },
+            { title, content}
+        )
+    }catch (err){
+        res.status(500).send('Server Error')
+    }
+})
+
+app.post('/entries/delete/:id', auth, async (req, res) => {
+    try{
+        await Entry.findOneAndDelete({ _idd: req.params.id, user: req.user.id})
+        res.redirect('/dashboard')
+    }catch (err) {
+        res.status(500).send('Server Error')
+    }
+})
+
+app.get('/settings', auth, (req, res) => {
+    res.render('settings', { error: null, success: null })
+})
+
