@@ -65,3 +65,4 @@ app.get('/dashboard', auth, async ()req, res)=> {
 app.get('/write', auth, (req, res) => {
     res.render('write', { entry:null })
 })
+

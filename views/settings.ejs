@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>settings — my diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+   <body>
+    <div class="page-container">
+        <div class="top-bar">
+            <a href="/dashboard">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                back to diary
+            </a>
+        </div>
+        <div class="page-title">Settings</div>
+        <div class="page-sub">Manage your account and security</div>
+        <div class="card">
+            <div class="card-title">Change password</div>
+            <% if(error) { %>
+                <div class="msg msg-error"><%= error %></div>
+            <% } %>
+            <% if(success) { %>
+                <div class="msg msg-success"><%= success %></div>
+            <% } %>
+
+            <form action="/settings/password" method="POST">
+                <div class="form-group">
+                    <label for="currentPassword">Current password</label>
+                    <input type="password" name="currentPassword" id="currentPassword" placeholder="enter your current password" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New password</label>
+                    <input type="password" name="newPassword" id="newPassword" placeholder="choose a new password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm new password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="re-enter new password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update password</button>
+            </form>
+        </div>
+        <hr class="divider">
+
+        <div class="card">
+            <div class="card-title">Diary lock password</div>
+            <p style="font-size:0.8125rem;color:#a0937d;margin-bottom:1.25rem;line-height:1.5;">
+                This is the password you enter every time you open the diary. 
+                Stored separately in <code style="background:#f0ebe1;padding:0.125rem 0.375rem;border-radius:0.25rem;font-size:0.75rem;">.diary_password</code>.
+            </p>
+            <form action="/settings/diary-password" method="POST">
+                <div class="form-group">
+                    <label for="currentDiaryPassword">Current diary password</label>
+                    <input type="password" name="currentDiaryPassword" id="currentDiaryPassword" placeholder="enter current diary password" required>
+                </div>
+                <div class="form-group">
+                    <label for="newDiaryPassword">New diary password</label>
+                    <input type="password" name="newDiaryPassword" id="newDiaryPassword" placeholder="enter new diary password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update diary password</button>
+            </form>
+        </div>
+        <hr class="divider">
+
+        <div class="card">
+            <div class="card-title">About your diary</div>
+            <div class="info-text">
+                <p><strong>Session:</strong> Your session expires when you close your browser.</p>
+                <p style="margin-top:0.5rem;"><strong>Privacy:</strong> Your entries are private and only accessible with your password.</p>
+                <p style="margin-top:0.5rem;"><strong>Data:</strong> All your diary entries are stored securely.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
