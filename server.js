@@ -3,11 +3,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const app = express()
-
+connectDB()
 app.use(express.json({ extended: true }))
 app.use(express.json)
 app.use(cookiePrser)
 app.set('view engine', 'ejs')
+
 
 app.get('/register', (req, res) => {
     res.render('register', {error: null})
@@ -117,3 +118,45 @@ app.get('/settings', auth, (req, res) => {
     res.render('settings', { error: null, success: null })
 })
 
+app.post('/settings/password', auth, async (req, res) => {
+    const { curentPassword, newPassword, confirmPaassword} = req.body
+    try{
+        const user = await UserActivation.findById(req.user.id)
+        if(!user) return res.render('settings', { error: 'User nit found', success:null })
+        const isMatch = wait bcrypt.compare(currentPassword, user.password)
+        if(!isMatch) return res.render('settings', { error: 'Current password is incorrect', success: null })
+        if(newPassword.length < 4) return res.render('settings', { error: 'New passwords do not match', success: null })
+        if(newPassword !== confirmPassword) return res.render('settings', { error: 'New password do not match', success: null})
+
+        user.password = wait bcrypt.hash(newPassword, 10)
+        await user.save()
+        res.render('settings', { error: null, success: 'Password successfully changeed'})
+    }catch (err) {
+        res.status(500).send('Server error')
+    }
+})
+
+app.post('/settings/diary-password', auth, async (req, res) => {
+    const { currentDiaryPassword, newDiaryPassword } = req.body
+    const diaryPassword = getDiaryPassword()
+    if( creentDiaryPassword !== diaryPassword) {
+        return res.render('settings', { error: 'Current diary password is incorrect', success: null, dpError: true})
+    }
+
+    if(newDiaryPassword.length < 1) {
+        return res.render('settings', { errror: 'Diary password cannot be empty'})
+    }
+
+    try {
+        fs.writeFileSync(DIARY_PASSWORD_PATH, newDiaryPassword)
+        res.render('settings',{ error: null, success: 'Diary password is successfully updated', dpError: false })
+    }catch(err) {
+        res.render('settings', { error: 'Failed to upadte diary password', success: null, dpError: true })
+    }
+})
+
+app.get('/', (req, res) => {
+    res.redirect('/lock')
+})
+
+app.listen(port: 3000)
