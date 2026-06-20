@@ -5,18 +5,18 @@ also delet the entry if you dont like it
 ---
 
 ## Features
-### Protected : It will be protected with a password
-### Accound : you can make account and then sign up
-### Entries : you can write entry about yourself or any other thing
-### Delet Entry : if you dont like your entry then no worries because you can aslo delet the entry
-### Password change : you cana slo chnage your password from the settings
-### Responsive : This app is also responsivee
+**Protected**: It will be protected with a password
+**Accound**: you can make account and then sign up
+**Entries**: you can write entry about yourself or any other thing
+**Delet Entry**: if you dont like your entry then no worries because you can aslo delet the entry
+**Password change**: you cana slo chnage your password from the settings
+**Responsive**: This app is also responsivee
 
 ---
 
 ## Use of AI
 i have used gemini ai for this i write the server.js and mongodb code all by myself because it was easy i just used the ai for styling i did the 40% styling by myself and i used the ai at the end in the server.js cause there was many small bugs
-i just fixed the bugs (typos mistaked) and dont add other extra code and also i used the ai in the .env file and in the settings.ejs 
+i just fixed the bugs (typos mistaked) and dont add other extra code and also i used the ai in the .env file and in the settings.ejs . also i have used little ai in the tailwind css
 
 ---
 
