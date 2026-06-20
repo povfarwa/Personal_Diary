@@ -1,14 +1,51 @@
 const express = require ('express')
 const bcrypt = require('bcryptjs')
+const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
+const fs = require('fs')
+const path = require('path')
 const cookieParser = require('cookie-parser')
 const app = express()
 connectDB()
+
 app.use(express.json({ extended: true }))
 app.use(express.json)
 app.use(cookiePrser)
 app.set('view engine', 'ejs')
 
+const DIARY_PASSWORD_PATH = path.join(__dirname, '.diary_password')
+
+function getDiaryPassword(){
+    try{
+        return fs.readFileSync(DIARY_PASSWORD_PATH, 'utf8').trim()
+    } catch {
+        return '1234'
+    }
+}
+
+function lockCheck(req, res, next){
+    const skipPaths = ['/lock', '/unlock', '/login', '/register']
+    if(skipPaths.includes(req.path)) return next()
+    if(req.cookies.diary_unlocked === 'yes') return next()
+    return res.redirect('/lock')
+}
+
+app.use(lockCheck)
+
+app.get('/lock', (res, res) => {
+    if(req.cookies.diary_unlocked === 'yes') return res.redirect('/login')
+    res.render('lock', { error: null })
+})
+
+app.post('/unlock', (req, res) => {
+    const { password } = req.body
+    const diaryPassword = getDiaryPassword()
+    if(password == diaryPassword) {
+        res.cookie('diary_unlocked', 'yes', { httpOnly: true })
+        return res.redirect('/login')
+    }
+    res.render('lock', { error: 'Incorrect password'})
+})
 
 app.get('/register', (req, res) => {
     res.render('register', {error: null})
@@ -32,12 +69,6 @@ app.get('/login', (req, res) => {
     res.render('login', {error: null})
 })
 
-app.get('/logout', (req, res) => {
-    res.clearCookie('token')
-    res.clearCookie('diary_unlocked')
-    res.redirect('/lock')
-})
-
 app.post('/login', async (req, res) => {
     const { username, password } = req.body
     try{
@@ -53,6 +84,13 @@ app.post('/login', async (req, res) => {
         res.status(500).send('Server Error')
     }
 })
+
+app.get('/logout', (req, res) => {
+    res.clearCookie('token')
+    res.clearCookie('diary_unlocked')
+    res.redirect('/lock')
+})
+
 
 app.get('/dashboard', auth, async ()req, res)=> {
     try{
