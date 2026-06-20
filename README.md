@@ -1,16 +1,16 @@
-## Introductions
+# Introductions
 Hellow I am farwa Zafar . I have build this app which is an personal diary where you cn write anything about yourself without worry because it is safe and prootected with lock and also you can chnage your password and setup password from settings . you can 
 also delet the entry if you dont like it
 
 ---
 
 ## Features
-**Protected** : It will be protected with a password
-**Accound** : you can make account and then sign up
-**Entries** : you can write entry about yourself or any other thing
-**Delet Entry** : if you dont like your entry then no worries because you can aslo delet the entry
-**Password change** : you cana slo chnage your password from the settings
-**Responsive** : This app is also responsivee
+### Protected : It will be protected with a password
+### Accound : you can make account and then sign up
+### Entries : you can write entry about yourself or any other thing
+### Delet Entry : if you dont like your entry then no worries because you can aslo delet the entry
+### Password change : you cana slo chnage your password from the settings
+### Responsive : This app is also responsivee
 
 ---
 
