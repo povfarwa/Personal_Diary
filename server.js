@@ -5,6 +5,11 @@ const jwt = require('jsonwebtoken')
 const fs = require('fs')
 const path = require('path')
 const cookieParser = require('cookie-parser')
+const connectDB = require('./config/db');
+const auth = require('/middleware/auth')
+const User = require('/models/User')
+const Entry = require('/models/Entry')
+
 const app = express()
 connectDB()
 
