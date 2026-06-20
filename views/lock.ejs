@@ -6,6 +6,111 @@
     <title>my diary</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf6ef;
+            color: #2d2d2d;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .lock-cad {
+            background: white;
+            border: 1px solid #e8e0d4;
+            border-radius: 1rem;
+             padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 340px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+
+        .lock-icon {
+            margin-bottom: 1rem;
+        }
+
+        .lock-title {
+            font-family: 'Lora', serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 0.25rem;
+        }
+
+        .lock-sub{
+            font-size: 0.8125rem;
+            color: #a0937d;
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group input {
+            width: 100%;
+            background: #faf6ef;
+            border: 1px solid #e8e0d4;
+            border-radius: 0.5rem;
+            padding: 0.8125rem;
+            font-size: 1.25rem;
+            color: #2d2a24;
+            outline: none;
+            text-align: center;
+            letter-spacing: 0.5em;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus {
+            border-color: #8B6914;
+            background: #ffffff;
+        }
+        .form-group input::placeholder {
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            color: #c4b8a8;
+        }
+
+        .btn-unlock {
+            width: 100%;
+            background: #2d2a24;
+            color: #faf6ef;
+            font-size: 0.9275rem;
+            font-weight: 600;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+         .btn-unlock:hover {
+            background: #1a1814;
+        }
+        .error-msg {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            font-size: 0.8125rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: <%= error ? 'block' : 'none' %>;
+        }
+        .hint {
+            font-size: 0.6875rem;
+            color: #d4cdc0;
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <div class="lock-card">

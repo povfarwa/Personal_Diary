@@ -7,6 +7,151 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #faf6ef;
+            color: #2d2a24;
+            min-height: 100vh;
+        }
+        .page-container {
+            max-width: 540px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e8e0d4;
+            margin-bottom: 2rem;
+        }
+        .top-bar a {
+            font-size: 0.875rem;
+            color: #a0937d;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            transition: color 0.2s;
+        }
+        .top-bar a:hover {
+            color: #2d2a24;
+        }
+        .page-title {
+            font-family: 'Lora', serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: #2d2a24;
+            margin-bottom: 0.25rem;
+        }
+        .page-sub {
+            font-size: 0.8125rem;
+            color: #a0937d;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e8e0d4;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+        .card-title {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d2a24;
+            margin-bottom: 1.25rem;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #8B6914;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.375rem;
+        }
+        .form-group input {
+            width: 100%;
+            background: #faf6ef;
+            border: 1px solid #e8e0d4;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            font-size: 0.9375rem;
+            color: #2d2a24;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus {
+            border-color: #8B6914;
+            background: #ffffff;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #2d2a24;
+            color: #faf6ef;
+        }
+        .btn-primary:hover {
+            background: #1a1814;
+        }
+        .btn-ghost {
+            background: transparent;
+            color: #a0937d;
+            border: 1px solid #e8e0d4;
+        }
+        .btn-ghost:hover {
+            background: #f0ebe1;
+            color: #2d2a24;
+        }
+        .msg {
+            font-size: 0.8125rem;
+            padding: 0.625rem 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+        .msg-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+        }
+        .msg-success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+        }
+        .divider {
+            border: none;
+            border-top: 1px solid #e8e0d4;
+            margin: 1.5rem 0;
+        }
+        .info-text {
+            font-size: 0.8125rem;
+            color: #a0937d;
+            line-height: 1.5;
+        }
+        .info-text strong {
+            color: #6b5e4e;
+        }
+    </style>
 </head>
 <body>
    <body>
