@@ -20,13 +20,15 @@ also delet the entry if you dont like it
 ---
 
 ## Use of AI
-i have used gemini ai for this i write the server.js and mongodb code all by myself because it was easy i just used the ai for styling i did the 40% styling by myself and i used the ai at the end in the server.js cause there was many small bugs
-i just fixed the bugs (typos mistaked) and dont add other extra code and also i used the ai in the .env file and in the settings.ejs . also i have used little ai in the tailwind css
+i have used gemini ai for this i write the server.js and mongodb code all by myself because it was easy i just used the ai for styling i did the 40% styling by myself and i used the ai at the end in the server.js because there was many small bugs
+and it was messed up and so sketchy i just fixed the bugs (typos mistaked) and dont add other extra code and also i used the ai in the .env file and in the settings.ejs . also i have used little ai in the tailwind css 
 
 ---
 
 ## Failures
 while making thiss i faced many small typos mistakes and also when i done everything i tried to test it again but i face the monngoDB error . it was stuck an freeze and then i start it again
+and the vercl issue . ufff that was so messy i was having a 500 issue and vercel was not deploying my project tehn i findout that i dont add the environment avraibles then i go to mongoDB atlas and create the link aand then i create the 
+environment varaible
 
 ---
 
@@ -38,6 +40,9 @@ while making thiss i faced many small typos mistakes and also when i done everyt
 ---
 
 ## Live demo
+https://personal-diary-nqpuu8bhs-farwa-zafars-projects.vercel.app/lock
+
+**Remember** : first it will ask for password because i stored it locally then just write 1234 and enter tehn you can register and signin once you sign in then just go to settings and then you can chnge the password
 
 ---
 
