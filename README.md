@@ -40,7 +40,7 @@ environment varaible
 ---
 
 ## Live demo
-https://personal-diary-nqpuu8bhs-farwa-zafars-projects.vercel.app/lock
+https://personal-diary-zeta.vercel.app/lock
 
 **Remember** : first it will ask for password because i stored it locally then just write 1234 and enter tehn you can register and signin once you sign in then just go to settings and then you can chnge the password
 
