@@ -5,12 +5,17 @@ also delet the entry if you dont like it
 ---
 
 ## Features
-**Protected**: It will be protected with a password
-**Accound**: you can make account and then sign up
-**Entries**: you can write entry about yourself or any other thing
-**Delet Entry**: if you dont like your entry then no worries because you can aslo delet the entry
-**Password change**: you cana slo chnage your password from the settings
-**Responsive**: This app is also responsivee
+**Protected**: It will be protected with a password.
+
+**Accound**: you can make account and then sign up.
+
+**Entries**: you can write entry about yourself or any other thing.
+
+**Delet Entry**: if you dont like your entry then no worries because you can aslo delet the entry.
+
+**Password change**: you cana slo chnage your password from the settings.
+
+**Responsive**: This app is also responsivee.
 
 ---
 
